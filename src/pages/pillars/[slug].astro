@@ -1,0 +1,311 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import pillars from "../../data/pillars.json";
+import siteContent from "../../data/site-content.json";
+
+export function getStaticPaths() {
+  return pillars.map((pillar, index) => ({
+    params: { slug: pillar.slug },
+    props: { pillar, index }
+  }));
+}
+
+const { pillar, index } = Astro.props;
+const current = pillars.find((entry) => entry.slug === pillar.slug);
+const previousIndex = (index - 1 + pillars.length) % pillars.length;
+const previousPillar = pillars[previousIndex];
+const nextIndex = (index + 1) % pillars.length;
+const nextPillar = pillars[nextIndex];
+const isFirstPillar = index === 0;
+const isLastPillar = index === pillars.length - 1;
+const pillarThemes = [
+  {
+    heroStart: "#2d6d6f",
+    heroEnd: "#7095a3",
+    accent: "#3f7780",
+    accentSoft: "rgba(63, 119, 128, 0.12)"
+  },
+  {
+    heroStart: "#8dbfbe",
+    heroEnd: "#5ca594",
+    accent: "#66b3a6",
+    accentSoft: "rgba(102, 179, 166, 0.12)"
+  },
+  {
+    heroStart: "#2d6d6f",
+    heroEnd: "#9fb8c2",
+    accent: "#7095a3",
+    accentSoft: "rgba(112, 149, 163, 0.16)"
+  },
+  {
+    heroStart: "#1b365d",
+    heroEnd: "#7b9ab8",
+    accent: "#5274a4",
+    accentSoft: "rgba(82, 116, 164, 0.14)"
+  },
+  {
+    heroStart: "#166659",
+    heroEnd: "#8dbfbe",
+    accent: "#50a294",
+    accentSoft: "rgba(80, 162, 148, 0.14)"
+  },
+  {
+    heroStart: "#1b365d",
+    heroEnd: "#7b9ab8",
+    accent: "#5274a4",
+    accentSoft: "rgba(82, 116, 164, 0.16)"
+  },
+  {
+    heroStart: "#165c8f",
+    heroEnd: "#5274a4",
+    accent: "#6f87b1",
+    accentSoft: "rgba(111, 135, 177, 0.14)"
+  }
+];
+const theme = pillarThemes[index % pillarThemes.length];
+
+if (!current) {
+  throw new Error(`Pillar not found: ${pillar.slug}`);
+}
+---
+
+<BaseLayout title={`${current.title} | ${siteContent.pillarPage.titleSuffix}`}>
+  <div
+    class="pillar-page"
+    style={`--pillar-hero-start: ${theme.heroStart}; --pillar-hero-end: ${theme.heroEnd}; --pillar-accent: ${theme.accent}; --pillar-accent-soft: ${theme.accentSoft};`}
+  >
+    <section class="pillar-hero">
+      <div class="inner">
+        <div class="pill-nav">
+          <a class="back-button" href="/">{siteContent.pillarPage.backLinkLabel}</a>
+          <span class="pill-count">
+            {siteContent.pillarPage.pillarCountLabel} {index + 1} {siteContent.pillarPage.ofLabel}{" "}
+            {pillars.length}
+          </span>
+        </div>
+        <h1>{current.title}</h1>
+        <p>{current.introText}</p>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="inner">
+        <h2>{siteContent.pillarPage.bodyHeading}</h2>
+        {
+          current.detailParagraphs.map((paragraph) => (
+            <p class="body-copy">{paragraph}</p>
+          ))
+        }
+
+        <div class="highlights">
+          {
+            current.focusBoxes.map((item) => (
+              <article class={item.priority2026 ? "is-priority" : undefined}>
+                {item.priority2026 && (
+                  <span class="priority-tag">{siteContent.pillarPage.priorityLabel}</span>
+                )}
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="pillar-actions" aria-label="Pillar navigation">
+          <a class="action-link" href={`/pillars/${previousPillar.slug}`}>
+            Previous pillar
+          </a>
+          <a class="action-link" href={`/pillars/${nextPillar.slug}`}>
+            Next pillar
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .pillar-hero {
+    color: #eaf1f8;
+    background:
+      radial-gradient(circle at 18% 100%, var(--pillar-accent-soft), transparent 42%),
+      radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(160deg, var(--pillar-hero-start) 0%, var(--pillar-hero-end) 100%);
+    background-size: auto, 16px 16px, auto;
+    padding: 2.2rem 1.25rem 3.4rem;
+  }
+
+  .inner {
+    max-width: 1220px;
+    margin: 0 auto;
+  }
+
+  .pill-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .back-button {
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 999px;
+    padding: 0.55rem 0.88rem;
+    font-size: 0.8rem;
+    font-weight: 650;
+    background: rgba(14, 40, 65, 0.18);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+  }
+
+  .back-button:hover {
+    background: rgba(14, 40, 65, 0.28);
+  }
+
+  .pill-count {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.2rem;
+    padding: 0.55rem 0.88rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.62);
+    background: rgba(14, 40, 65, 0.14);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #ffffff;
+    font-weight: 650;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.35rem, 5vw, 4.7rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  .pillar-hero p {
+    margin: 1.2rem 0 0;
+    max-width: 57ch;
+    color: #d3dfeb;
+    font-size: 1.2rem;
+    line-height: 1.62;
+  }
+
+  .content {
+    background: #f4f3f1;
+    padding: 3.1rem 1.25rem 4rem;
+  }
+
+  .content h2 {
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.95rem, 3.4vw, 2.9rem);
+    font-family: var(--font-display);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+
+  .body-copy {
+    margin: 0 0 1.25rem;
+    max-width: 74ch;
+    color: #2f4355;
+    line-height: 1.72;
+    font-size: 1.05rem;
+  }
+
+  .highlights {
+    margin-top: 1.7rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .highlights article {
+    border-left: 3px solid var(--pillar-accent);
+    border-right: 3px solid var(--pillar-accent-soft);
+    background: #ececea;
+    padding: 1rem 1rem 1.05rem;
+    border-radius: 0.2rem;
+    position: relative;
+  }
+
+  .highlights article.is-priority {
+    box-shadow: inset 0 0 0 1px var(--pillar-accent-soft);
+  }
+
+  .priority-tag {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 0.7rem;
+    padding: 0.32rem 0.58rem;
+    border-radius: 999px;
+    background: var(--pillar-accent-soft);
+    color: var(--pillar-accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .highlights h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+
+  .highlights p {
+    margin: 0;
+    color: #54616e;
+    line-height: 1.62;
+  }
+
+  .pillar-actions {
+    margin-top: 1.35rem;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .action-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    min-width: 5.6rem;
+    min-height: 1.5rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 0.45rem;
+    background: #ffffff;
+    color: #111111;
+    border: 1px solid rgba(14, 40, 65, 0.35);
+    box-shadow: 0 1px 0 rgba(14, 40, 65, 0.08);
+    font-size: 0.85rem;
+    line-height: 1;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .action-link:hover {
+    transform: translateY(-1px);
+    background: #f8f8f7;
+    border-color: rgba(14, 40, 65, 0.52);
+  }
+
+  @media (max-width: 900px) {
+    .highlights {
+      grid-template-columns: 1fr;
+    }
+
+    .pillar-hero p {
+      font-size: 1.1rem;
+    }
+  }
+</style>

@@ -1,0 +1,16 @@
+{
+  "name": "my-website",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "predev": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/free-port-4321.ps1",
+    "dev": "set ASTRO_TELEMETRY_DISABLED=1&& astro dev --port 4322",
+    "start": "set ASTRO_TELEMETRY_DISABLED=1&& astro dev --port 4322",
+    "build": "set ASTRO_TELEMETRY_DISABLED=1&& astro build",
+    "preview": "set ASTRO_TELEMETRY_DISABLED=1&& astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.5.0"
+  }
+}

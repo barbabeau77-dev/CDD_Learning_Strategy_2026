@@ -1,0 +1,71 @@
+---
+interface Props {
+  title: string;
+}
+
+import siteContent from "../data/site-content.json";
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={siteContent.site.defaultMetaDescription} />
+    <title>{title}</title>
+    <style>
+      :root {
+        --brand-navy: #0e2841;
+        --brand-teal: #156082;
+        --brand-orange: #e97132;
+        --brand-green: #196b24;
+        --brand-purple: #a02b93;
+        --bg: #f4f3f1;
+        --text: #0e2841;
+        --card: #ffffffd9;
+        --stroke: #d9dddf;
+        --muted: #5e6b78;
+        --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        --font-display: "Avenir Next", "Segoe UI Semibold", "Helvetica Neue", Arial,
+          sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-sans);
+        font-size: 1.04rem;
+        line-height: 1.55;
+        letter-spacing: 0.01em;
+        color: var(--text);
+        background: var(--bg);
+        min-height: 100vh;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      main {
+        display: block;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      strong,
+      b {
+        font-family: var(--font-display);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
