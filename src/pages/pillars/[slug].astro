@@ -18,6 +18,7 @@ const nextIndex = (index + 1) % pillars.length;
 const nextPillar = pillars[nextIndex];
 const isFirstPillar = index === 0;
 const isLastPillar = index === pillars.length - 1;
+const base = import.meta.env.BASE_URL;
 const pillarThemes = [
   {
     heroStart: "#2d6d6f",
@@ -77,7 +78,7 @@ if (!current) {
     <section class="pillar-hero">
       <div class="inner">
         <div class="pill-nav">
-          <a class="back-button" href="/">{siteContent.pillarPage.backLinkLabel}</a>
+          <a class="back-button" href={base}>{siteContent.pillarPage.backLinkLabel}</a>
           <span class="pill-count">
             {siteContent.pillarPage.pillarCountLabel} {index + 1} {siteContent.pillarPage.ofLabel}{" "}
             {pillars.length}
@@ -112,10 +113,10 @@ if (!current) {
         </div>
 
         <div class="pillar-actions" aria-label="Pillar navigation">
-          <a class="action-link" href={`/pillars/${previousPillar.slug}`}>
+          <a class="action-link" href={`${base}pillars/${previousPillar.slug}/`}>
             Previous pillar
           </a>
-          <a class="action-link" href={`/pillars/${nextPillar.slug}`}>
+          <a class="action-link" href={`${base}pillars/${nextPillar.slug}/`}>
             Next pillar
           </a>
         </div>

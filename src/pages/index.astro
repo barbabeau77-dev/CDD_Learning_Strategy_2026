@@ -9,6 +9,7 @@ const heroStats = homeContent.vision.stats.map((stat) => ({
   ...stat,
   resolvedValue: stat.value === "{pillars.length}" ? String(pillars.length) : stat.value
 }));
+const base = import.meta.env.BASE_URL;
 const iconPaths = {
   "skills-framework": [
     "M10 8h12",
@@ -103,7 +104,7 @@ const iconPaths = {
             </div>
             <h3>{pillar.title}</h3>
             <p>{pillar.cardDescription}</p>
-            <a href={`/pillars/${pillar.slug}`}>{homeContent.framework.linkLabel}</a>
+            <a href={`${base}pillars/${pillar.slug}/`}>{homeContent.framework.linkLabel}</a>
           </article>
         ))
       }
