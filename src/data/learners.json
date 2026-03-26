@@ -1,0 +1,179 @@
+{
+  "pageTitle": "Our Learners | Learning strategy 2026",
+  "kicker": "OUR LEARNERS",
+  "title": "The strategy through their eyes",
+  "titleEmphasis": "eyes",
+  "lead": [
+    "We already have a solid foundation - skills, learning paths, and practical assessments in Veida.",
+    "The strategy builds on top of that, making the experience better, more relevant, and more connected to real work."
+  ],
+  "introBox": "Learners today follow structured learning paths focused on what they must know for a specific task. When they complete a path - or can already demonstrate the skill - they go through a practical assessment and gain a verified skill in the platform. The strategy ahead complements this structure and strengthens what happens around it.",
+  "profiles": [
+    {
+      "id": "alex",
+      "initials": "AL",
+      "name": "Alex",
+      "age": 35,
+      "role": "Hands-on Field Technician",
+      "experience": "18 years experience",
+      "context": "vocational background",
+      "motivation": "low digital motivation",
+      "quote": "I am not afraid to get my hands dirty. Hands-on experience is the best.",
+      "nowTitle": "Where he is now",
+      "nowParagraphs": [
+        "Alex has structured learning paths in Veida and progresses through to practical assessment where he can show what he can actually do. He completes Learning Paths when assigned but does not always engage deeply with digital content, and sometimes rushes through to get to the part he is good at.",
+        "There is little connecting what he learned in Veida to what happens back in the workshop, and no support available when he hits a problem on the job."
+      ],
+      "addsTitle": "What the strategy adds",
+      "addsParagraphs": [
+        "A program approach gives Alex a clearer sense of his development - not just a list of lessons to tick off. Nudging tools help him keep a steady pace rather than leaving things to the last minute. Pre-assessment surfaces gaps he may not know he has, particularly in hydraulics and electrics.",
+        "Manager involvement is the biggest change: when his manager follows up and creates space to apply new skills in daily work, the gap between digital learning and real performance closes. And when Alex is out in the field and cannot remember an exact repair procedure, quick reference support available on his phone means he does not have to rely on memory alone."
+      ],
+      "pillars": [
+        {
+          "label": "Skills framework",
+          "tone": "teal"
+        },
+        {
+          "label": "Learning structure",
+          "tone": "green"
+        },
+        {
+          "label": "Manager involvement",
+          "tone": "purple"
+        },
+        {
+          "label": "Learning support",
+          "tone": "orange"
+        },
+        {
+          "label": "Assessment",
+          "tone": "blue"
+        }
+      ]
+    },
+    {
+      "id": "lee",
+      "initials": "LE",
+      "name": "Lee",
+      "age": 38,
+      "role": "Advanced Field Technician",
+      "experience": "20 years experience",
+      "context": "curious",
+      "motivation": "high internal motivation",
+      "quote": "Complicated is fun and new technologies are exciting.",
+      "nowTitle": "Where he is now",
+      "nowParagraphs": [
+        "Lee engages genuinely with learning paths and values practical assessments. He is already a natural learner who seeks out online mechanic communities and shares knowledge with colleagues. The current structure works well for him.",
+        "What Veida does not yet give him is a sense of where he can go next - or a way to get quick technical answers in the flow of work without turning to external sources."
+      ],
+      "addsTitle": "What the strategy adds",
+      "addsParagraphs": [
+        "Granular role profiles map out visible progression toward roles like trainer, product specialist, or workshop manager - turning Veida from a compliance tool into a genuine career development platform for him.",
+        "Additional content gives Lee more to explore beyond required paths. Social learning and the dealer trainer network create structured opportunities to share and learn from others. And where Lee currently turns to external communities for quick technical answers, the goal is for Veida's learning support to serve that need instead - keeping him inside the platform and making his expertise more visible to those around him."
+      ],
+      "pillars": [
+        {
+          "label": "Skills framework",
+          "tone": "teal"
+        },
+        {
+          "label": "Learning structure",
+          "tone": "green"
+        },
+        {
+          "label": "Social learning",
+          "tone": "green"
+        },
+        {
+          "label": "Assessment",
+          "tone": "blue"
+        },
+        {
+          "label": "Learning support",
+          "tone": "orange"
+        }
+      ]
+    },
+    {
+      "id": "michael",
+      "initials": "MI",
+      "name": "Michael",
+      "age": 45,
+      "role": "Goal-Oriented Salesman",
+      "experience": "20 years in sales",
+      "context": "always on the move",
+      "motivation": "learns continuously outside Veida",
+      "quote": "My customers are my friends. Relationship-building is everything to me.",
+      "priorityLabel": "Learning support priority",
+      "theme": "orange",
+      "nowTitle": "Where he is now",
+      "nowParagraphs": [
+        "Michael follows his learning path and completes courses, but Veida is not naturally how he works. He picks up product knowledge from customers and the field, and finds that by the time a full learning path is ready, he may already have been asked about it by customers.",
+        "He has no time for longer training sessions. Right now, Veida asks him to sit down and learn - but what he actually needs is information available exactly when and where he needs it."
+      ],
+      "addsTitle": "What the strategy adds",
+      "addsParagraphs": [
+        "Short product updates published early - before a full learning path is ready - mean Michael gets the essentials fast. That closes the gap between product launch and customer conversation, which is where it matters most for him. Program design built around his reality: short modules, mobile-friendly, consumable in the car between visits.",
+        "Learning support is where the strategy makes the biggest difference for Michael. Sitting in a car park before a customer visit, he needs a quick product summary, a competitor comparison, or a key spec - not a course. Mobile-friendly, searchable support built into Veida, or other Volvo systems, that he can use in the moment transforms the platform from something he logs into occasionally into something that actively helps him sell. Nudges tied to commercial moments - a product launch, an upcoming visit - feel relevant rather than administrative. For new salespeople, a structured onboarding program prevents the steep learning curve that currently hits them on day one."
+      ],
+      "pillars": [
+        {
+          "label": "Learning structure",
+          "tone": "green"
+        },
+        {
+          "label": "Learning support",
+          "tone": "orange"
+        },
+        {
+          "label": "Skills framework",
+          "tone": "teal"
+        },
+        {
+          "label": "Manager involvement",
+          "tone": "purple"
+        }
+      ]
+    },
+    {
+      "id": "frank",
+      "initials": "FR",
+      "name": "Frank",
+      "age": 37,
+      "role": "Aftermarket CSR",
+      "experience": "18 years experience",
+      "context": "multitasker",
+      "motivation": "reactive working style",
+      "quote": "My job is never boring - but at times it gets a bit too exciting.",
+      "nowTitle": "Where he is now",
+      "nowParagraphs": [
+        "Frank follows his learning path but finds the content too generic - not matched to what a CSR actually does day to day. He logs in twice a month at most, often after hours, motivated primarily by being able to answer customer questions rather than developing skills for their own sake.",
+        "His day is reactive and hard to plan. Longer structured learning sessions rarely happen unless something forces them, and there is nothing in Veida today that helps him when he is in the middle of a live customer situation."
+      ],
+      "addsTitle": "What the strategy adds",
+      "addsParagraphs": [
+        "Clearer role profiles are the most important change for Frank. When his learning path reflects what a CSR actually does - parts conversations, customer objections, system navigation - the relevance problem largely solves itself and his motivation to engage increases.",
+        "Nudging tools help with the irregular login pattern by prompting him at the right moments. And for the moments that matter most - on the phone with a customer who needs a fast answer - learning support in the flow of work means Frank does not have to put the customer on hold and hope he remembers. The right information, available immediately, is the difference between a confident conversation and a frustrated one."
+      ],
+      "pillars": [
+        {
+          "label": "Skills framework",
+          "tone": "teal"
+        },
+        {
+          "label": "Learning structure",
+          "tone": "green"
+        },
+        {
+          "label": "Learning support",
+          "tone": "orange"
+        },
+        {
+          "label": "Manager involvement",
+          "tone": "purple"
+        }
+      ]
+    }
+  ]
+}

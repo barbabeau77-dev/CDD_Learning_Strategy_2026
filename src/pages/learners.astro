@@ -1,0 +1,362 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import learnersData from "../data/learners.json";
+
+const titleParts = learnersData.title.split(learnersData.titleEmphasis ?? "");
+---
+
+<BaseLayout title={learnersData.pageTitle}>
+  <section class="learners-page">
+    <div class="inner">
+      <header class="intro">
+        <p class="kicker">{learnersData.kicker}</p>
+        <h1>
+          {titleParts[0]}
+          {learnersData.titleEmphasis && <em>{learnersData.titleEmphasis}</em>}
+          {titleParts[1]}
+        </h1>
+        {learnersData.lead.map((paragraph) => <p class="lead">{paragraph}</p>)}
+        <p class="intro-box">{learnersData.introBox}</p>
+      </header>
+
+      <div class="profile-list">
+        {
+          learnersData.profiles.map((profile) => (
+            <article class={`profile-card ${profile.theme ?? ""}`}>
+              <header class="profile-header">
+                <span class="avatar" aria-hidden="true">{profile.initials}</span>
+                <div class="profile-title-wrap">
+                  <h2>
+                    {profile.name}, {profile.age} - {profile.role}
+                    {profile.priorityLabel && <span class="priority-chip">{profile.priorityLabel}</span>}
+                  </h2>
+                  <p class="meta">
+                    {profile.experience} - {profile.context} - {profile.motivation}
+                  </p>
+                  <p class="quote">"{profile.quote}"</p>
+                </div>
+              </header>
+
+              <div class="columns">
+                <section class="column now">
+                  <h3>{profile.nowTitle}</h3>
+                  {profile.nowParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+                </section>
+                <section class="column adds">
+                  <h3>{profile.addsTitle}</h3>
+                  {profile.addsParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+                </section>
+              </div>
+
+              <footer class="pillars">
+                <p>Pillars</p>
+                <div class="tags">
+                  {profile.pillars.map((pillar) => <span class={`tag ${pillar.tone}`}>{pillar.label}</span>)}
+                </div>
+              </footer>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .learners-page {
+    padding: 1rem 0 2rem;
+    background: #f3f4f3;
+  }
+
+  .inner {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 0.9rem;
+  }
+
+  .intro {
+    margin: 0 0 1.2rem;
+    max-width: 74rem;
+  }
+
+  .kicker {
+    margin: 0;
+    color: #656f78;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  h1 {
+    margin: 0.3rem 0 0.9rem;
+    font-size: clamp(2rem, 3vw, 2.85rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #1d2227;
+  }
+
+  h1 em {
+    color: #156082;
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .lead {
+    margin: 0 0 0.25rem;
+    color: #4e5962;
+    line-height: 1.55;
+    max-width: 75ch;
+  }
+
+  .intro-box {
+    margin: 0.9rem 0 0;
+    border-left: 3px solid #156082;
+    border-radius: 0.32rem;
+    background: #eeefee;
+    padding: 0.95rem 1rem;
+    color: #424b53;
+    line-height: 1.65;
+  }
+
+  .profile-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .profile-card {
+    border: 1px solid #cfd4d8;
+    background: #f5f6f5;
+    border-radius: 0.82rem;
+    overflow: hidden;
+  }
+
+  .profile-card.orange {
+    border-color: #d68a32;
+  }
+
+  .profile-header {
+    display: flex;
+    gap: 0.88rem;
+    align-items: flex-start;
+    padding: 1.1rem 1.1rem 0.8rem;
+    border-bottom: 1px solid #cfd4d8;
+  }
+
+  .profile-card.orange .profile-header {
+    border-bottom-color: #e2a04b;
+  }
+
+  .avatar {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    background: #d7e5d1;
+    color: #476138;
+  }
+
+  .profile-card:nth-child(2) .avatar {
+    background: #d3e1ef;
+    color: #355f8e;
+  }
+
+  .profile-card:nth-child(3) .avatar {
+    background: #ebdfc9;
+    color: #8a6333;
+  }
+
+  .profile-card:nth-child(4) .avatar {
+    background: #d5eae2;
+    color: #2f6454;
+  }
+
+  .profile-title-wrap {
+    min-width: 0;
+    flex: 1;
+  }
+
+  h2 {
+    margin: 0;
+    color: #1f252b;
+    font-size: clamp(1.25rem, 2vw, 2rem);
+    line-height: 1.2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .priority-chip {
+    text-transform: uppercase;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    border: 1px solid #d38c2f;
+    color: #9d5f17;
+    border-radius: 999px;
+    padding: 0.2rem 0.5rem;
+    line-height: 1.3;
+  }
+
+  .meta {
+    margin: 0.2rem 0 0.3rem;
+    color: #58616a;
+    font-size: 0.9rem;
+  }
+
+  .quote {
+    margin: 0;
+    padding-left: 0.8rem;
+    border-left: 2px solid #c3c8cd;
+    color: #535d65;
+    font-style: italic;
+    font-size: 0.96rem;
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+    padding: 0.95rem 1.1rem 0.8rem;
+  }
+
+  .column {
+    background: #ecedeb;
+    border-radius: 0.45rem;
+    padding: 0.95rem 0.95rem 1rem;
+    border: 1px solid #ebece9;
+  }
+
+  .column.adds {
+    background: #d7ece7;
+    border-color: #cae5de;
+  }
+
+  .profile-card.orange .column.adds {
+    background: #f0e2c8;
+    border-color: #e8d5b3;
+  }
+
+  h3 {
+    margin: 0 0 0.45rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.82rem;
+    color: #9f5723;
+  }
+
+  .column.adds h3 {
+    color: #237463;
+  }
+
+  .profile-card.orange .column.adds h3 {
+    color: #7c5827;
+  }
+
+  .column p {
+    margin: 0 0 0.7rem;
+    color: #404951;
+    line-height: 1.8;
+    font-size: 0.95rem;
+  }
+
+  .column p:last-child {
+    margin-bottom: 0;
+  }
+
+  .pillars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+    border-top: 1px solid #d8dcdf;
+    padding: 0.88rem 1.1rem 1rem;
+  }
+
+  .profile-card.orange .pillars {
+    border-top-color: #e1c59a;
+  }
+
+  .pillars p {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    font-size: 0.77rem;
+    color: #606a72;
+    font-weight: 700;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .tag {
+    border-radius: 999px;
+    border: 1px solid;
+    font-size: 0.76rem;
+    padding: 0.21rem 0.63rem;
+    line-height: 1.3;
+    background: #fff;
+  }
+
+  .tag.teal {
+    color: #1c7b70;
+    border-color: #4db8ad;
+    background: #e0f2ef;
+  }
+
+  .tag.green {
+    color: #4a7227;
+    border-color: #9ec36d;
+    background: #e7f1d9;
+  }
+
+  .tag.orange {
+    color: #a8512b;
+    border-color: #df8d67;
+    background: #f8e7dd;
+  }
+
+  .tag.purple {
+    color: #5663bc;
+    border-color: #9aa3e2;
+    background: #e7e9fa;
+  }
+
+  .tag.blue {
+    color: #3269a6;
+    border-color: #8fb6db;
+    background: #e3eff8;
+  }
+
+  @media (max-width: 900px) {
+    .columns {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .profile-header {
+      padding-left: 0.9rem;
+      padding-right: 0.9rem;
+    }
+
+    .columns {
+      padding-left: 0.9rem;
+      padding-right: 0.9rem;
+    }
+
+    .pillars {
+      padding-left: 0.9rem;
+      padding-right: 0.9rem;
+    }
+  }
+</style>
