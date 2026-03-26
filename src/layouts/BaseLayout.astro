@@ -15,6 +15,7 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={siteContent.site.defaultMetaDescription} />
     <title>{title}</title>
+    <slot name="head" />
     <style>
       :root {
         --brand-navy: #0e2841;

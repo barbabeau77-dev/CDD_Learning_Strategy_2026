@@ -11,6 +11,7 @@
   "profiles": [
     {
       "id": "alex",
+      "portrait": "alex.png",
       "initials": "AL",
       "name": "Alex",
       "age": 35,
@@ -54,6 +55,7 @@
     },
     {
       "id": "lee",
+      "portrait": "kim.png",
       "initials": "LE",
       "name": "Lee",
       "age": 38,
@@ -97,6 +99,7 @@
     },
     {
       "id": "michael",
+      "portrait": "michael.png",
       "initials": "MI",
       "name": "Michael",
       "age": 45,
@@ -138,6 +141,7 @@
     },
     {
       "id": "frank",
+      "portrait": "peter.png",
       "initials": "FR",
       "name": "Frank",
       "age": 37,

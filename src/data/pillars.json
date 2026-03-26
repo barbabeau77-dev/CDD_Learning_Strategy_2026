@@ -13,22 +13,26 @@
       {
         "title": "Making Skills Easy to Navigate",
         "description": "Today the skills framework exists in several places, making it hard to see how skills connect to learning paths and assessments. We want a single, clear structure that brings everything together in one place. This makes it easier for both our team and dealers to understand requirements, follow progression, and use skills as the real foundation for development.",
-        "priority2026": true
+        "priority2026": true,
+        "owner": "Johan Pantzare"
       },
       {
         "title": "Granular Role Profiles for Better Development",
         "description": "Today our dealer-facing roles, Technician, Sales, CSR, Parts, and others, are defined at too high a level to be truly useful. We need granular role profiles that capture key tasks, required skills, expected performance levels, and typical learning milestones. These profiles will become the backbone for all future programs, making it possible to tailor learning and assessments in a way that's genuinely relevant to each role.",
-        "priority2026": true
+        "priority2026": true,
+        "owner": "Märta"
       },
       {
         "title": "Does Our Skills Framework Work in Practice?",
         "description": "This initiative is about reviewing the skills framework to ensure it reflects real work and current needs, but it goes beyond checking definitions. We also look at how the framework is actually used and find ways to better support dealers in applying it as intended, so it becomes a genuinely useful tool rather than something that exists only on paper.",
-        "priority2026": true
+        "priority2026": true,
+        "owner": "Rasha"
       },
       {
         "title": "Skills Maintenance",
-        "description": "This initiative supports the ongoing review and updating of the skills framework, ensuring skills stay relevant, aligned with current work, and reflect changes in products, tools, and dealer needs. To kick off 2026, our focus is on expanding the framework with Warranty and Logistics skills Ã¢â‚¬â€ two areas that have been high on the priority list.",
-        "priority2026": true
+        "description": "This initiative supports the ongoing review and updating of the skills framework, ensuring skills stay relevant, aligned with current work, and reflect changes in products, tools, and dealer needs. To kick off 2026, our focus is on expanding the framework with Warranty and Logistics skills, two areas that have been high on the priority list.",
+        "priority2026": true,
+        "owner": "Rasha & Märta"
       }
     ],
     "icon": "SF",
@@ -47,17 +51,20 @@
       {
         "title": "A Learner Journey That Makes Sense",
         "description": "Learners need a clear way to see where they are and what comes next. We will make the journey in Veida easier to navigate for both new and experienced users. With logical steps, better links to skills, and a structure that helps people understand their progress and what to focus on next.",
-        "priority2026": true
+        "priority2026": true,
+        "owner": "Johan Paul"
       },
       {
         "title": "Learning That Fits Together, Not Just Side by Side",
         "description": "Today learning in Veida can feel like disconnected pieces. We will build a program-based structure that groups related learning into a coherent whole. For example, a Workshop Technician program covering onboarding, maintenance, and repair. This gives learners a clearer sense of direction and makes development feel purposeful.",
-        "priority2026": true
+        "priority2026": true,
+        "owner": "Märta"
       },
       {
         "title": "Getting the Most Out of Veida",
         "description": "We want to make sure we're using Veida in the best possible way - not just today, but with an eye on what's coming. This initiative looks at how we structure content using courses, channels, and other platform features, and investigates how Valamis' future development roadmap will affect us. The goal is to ensure our setup is both effective now and well-positioned for what's next.",
-        "priority2026": true
+        "priority2026": true,
+        "owner": "Johan Pantzare"
       }
     ],
     "icon": "LS",
@@ -74,11 +81,11 @@
     "focusBoxes": [
       {
         "title": "Pre-assessment to identify current level and skill gaps",
-        "description": "Pre-assessment gives learners and managers a clear view of current skill levels before training or validation begins. Instead of guessing at readiness, both sides get concrete information: what's already in place, where the gaps are, and what learning or practice makes most sense as a next step. Ideally, pre-assessment results feed directly into Veida Ã¢â‚¬â€ pointing learners toward the most relevant content and making the path to validation more efficient and targeted."
+        "description": "Pre-assessment gives learners and managers a clear view of current skill levels before training or validation begins. Instead of guessing at readiness, both sides get concrete information: what's already in place, where the gaps are, and what learning or practice makes most sense as a next step. Ideally, pre-assessment results feed directly into Veida, pointing learners toward the most relevant content and making the path to validation more efficient and targeted."
       },
       {
         "title": "Are Our Assessments and Assessors Fit for Purpose?",
-        "description": "We have built a solid base of assessments Ã¢â‚¬â€ now it's time to look critically at how well they're working. This initiative evaluates the quality and relevance of existing assessments and explores whether anything needs to be updated or improved. It also takes a closer look at the assessor role: do assessors have the training they need, and do they feel confident in carrying out assessments consistently and fairly?"
+        "description": "We have built a solid base of assessments, now it's time to look critically at how well they're working. This initiative evaluates the quality and relevance of existing assessments and explores whether anything needs to be updated or improved. It also takes a closer look at the assessor role: do assessors have the training they need, and do they feel confident in carrying out assessments consistently and fairly?"
       }
     ],
     "icon": "AV",
@@ -89,6 +96,7 @@
     "title": "Manager Involvement",
     "cardDescription": "Managers are the link between learning and real performance. We want to make that role easier to fulfil.",
     "introText": "Managers need a clearer role and better tools to support their team's development, and the visibility to act on it.",
+    "owner": "Märta",
     "detailParagraphs": [
       "Learning doesn't end when a lesson is completed. What happens back in the workshop or on the floor is where skills are either applied and developed further, or forgotten. Managers are the people best placed to make that transfer happen, but only if they know what to look for and feel equipped to act on it. Making manager involvement a priority in 2026 is about closing that gap and making sure development doesn't stop at the screen.",
       ""
@@ -118,7 +126,8 @@
       {
         "title": "A Space for Dealer Trainers to Connect and Grow",
         "description": "We already have a dealer trainer network. This initiative builds on it. By creating a dedicated forum, we give trainers a live space to ask questions, share experiences, and receive new material and practical tips directly from our regional trainers. It strengthens the connections that already exist and makes the network more useful in everyday work.",
-        "priority2026": true
+        "priority2026": true,
+        "owner": "Märta"
       }
     ],
     "icon": "SL",
@@ -137,12 +146,14 @@
       {
         "title": "Veida AI Support / Agent",
         "description": "A Veida's AI agent that would give users quick, targeted help directly inside the platform - no extra steps, no waiting. Learners can get answers to common questions, guidance on where to start, or links to relevant content. Assessors get support with criteria and checklists, and managers get quick snapshots of team progress. It's practical assistance built into the flow of learning.",
-        "priority2026": true
+        "priority2026": true,
+        "owner": "Johan Pantzare"
       },
       {
         "title": "Nudging and pacing prompts between modules",
         "description": "Many learners complete digital modules either very late or with long gaps between sessions, making it harder to retain and apply what they've learned. This initiative introduces timely prompts and practice opportunities to encourage a more consistent pace — and gives managers simple reminders to help them follow up and keep learning on track in daily work.",
-        "priority2026": true
+        "priority2026": true,
+        "owner": "Rasha"
       },
       {
         "title": "Integrate Learning into Workflows",
@@ -165,12 +176,14 @@
       {
         "title": "Are Our Technical Programs Fit for Purpose?",
         "description": "Our technical programs form the core of dealer learning, but are they sufficient in their current form? This initiative takes a structured look at whether existing programs meet the needs of learners today, and whether there are gaps that could be addressed through additional events, practical labs, or other formats. The goal is programs that are thorough, relevant, and genuinely prepare people for the work they do.",
-        "priority2026": true
+        "priority2026": true,
+        "owner": "Johan Paul"
       },
       {
         "title": "A Dedicated Space for Additional Learning Content",
         "description": "Not all learning fits neatly into a formal path. And that's a good thing. This initiative creates a defined space and process for developing additional mlearning content aimed at the curious learner who wants to go beyond the basics. By giving this content a clear home and a structured development process, we make it easier to produce, maintain, and discover, turning curiosity into real development.",
-        "priority2026": true
+        "priority2026": true,
+        "owner": "Märta"
       }
     ],
     "icon": "SP",

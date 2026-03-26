@@ -97,6 +97,7 @@ if (!current) {
             <p class="body-copy">{paragraph}</p>
           ))
         }
+        {current.owner && <p class="pillar-owner">Owner: {current.owner}</p>}
 
         <div class="highlights">
           {
@@ -107,6 +108,7 @@ if (!current) {
                 )}
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
+                {item.priority2026 && item.owner && <span class="owner-tag">Owner: {item.owner}</span>}
               </article>
             ))
           }
@@ -220,6 +222,15 @@ if (!current) {
     font-size: 1.05rem;
   }
 
+  .pillar-owner {
+    margin: 0 0 1.7rem;
+    color: #2f4355;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
   .highlights {
     margin-top: 1.7rem;
     display: grid;
@@ -234,6 +245,8 @@ if (!current) {
     padding: 1rem 1rem 1.05rem;
     border-radius: 0.2rem;
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
 
   .highlights article.is-priority {
@@ -266,6 +279,17 @@ if (!current) {
     margin: 0;
     color: #54616e;
     line-height: 1.62;
+  }
+
+  .owner-tag {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 0.9rem;
+    color: #2f4355;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   .pillar-actions {

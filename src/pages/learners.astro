@@ -3,12 +3,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import learnersData from "../data/learners.json";
 
 const titleParts = learnersData.title.split(learnersData.titleEmphasis ?? "");
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={learnersData.pageTitle}>
   <section class="learners-page">
     <div class="inner">
       <header class="intro">
+        <a class="back-home" href={`${import.meta.env.BASE_URL}`}>Back to Overview</a>
         <p class="kicker">{learnersData.kicker}</p>
         <h1>
           {titleParts[0]}
@@ -24,7 +26,20 @@ const titleParts = learnersData.title.split(learnersData.titleEmphasis ?? "");
           learnersData.profiles.map((profile) => (
             <article class={`profile-card ${profile.theme ?? ""}`}>
               <header class="profile-header">
-                <span class="avatar" aria-hidden="true">{profile.initials}</span>
+                {
+                  profile.portrait ? (
+                    <img
+                      class="portrait"
+                      src={`${base}images/learners/${profile.portrait}`}
+                      alt={`${profile.name} portrait`}
+                      loading="lazy"
+                      width="96"
+                      height="96"
+                    />
+                  ) : (
+                    <span class="avatar" aria-hidden="true">{profile.initials}</span>
+                  )
+                }
                 <div class="profile-title-wrap">
                   <h2>
                     {profile.name}, {profile.age} - {profile.role}
@@ -88,6 +103,29 @@ const titleParts = learnersData.title.split(learnersData.titleEmphasis ?? "");
     font-weight: 700;
   }
 
+  .back-home {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 0.75rem;
+    text-decoration: none;
+    color: #23445f;
+    border: 1px solid #aebdca;
+    border-radius: 999px;
+    background: #ffffff;
+    padding: 0.55rem 0.88rem;
+    font-size: 0.8rem;
+    font-weight: 650;
+    text-shadow: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .back-home:hover {
+    background: #f2f6f9;
+    border-color: #8fa5b7;
+    transform: translateY(-1px);
+  }
+
   h1 {
     margin: 0.3rem 0 0.9rem;
     font-size: clamp(2rem, 3vw, 2.85rem);
@@ -148,8 +186,8 @@ const titleParts = learnersData.title.split(learnersData.titleEmphasis ?? "");
   }
 
   .avatar {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 999px;
     flex: none;
     display: inline-flex;
@@ -162,19 +200,15 @@ const titleParts = learnersData.title.split(learnersData.titleEmphasis ?? "");
     color: #476138;
   }
 
-  .profile-card:nth-child(2) .avatar {
-    background: #d3e1ef;
-    color: #355f8e;
-  }
-
-  .profile-card:nth-child(3) .avatar {
-    background: #ebdfc9;
-    color: #8a6333;
-  }
-
-  .profile-card:nth-child(4) .avatar {
-    background: #d5eae2;
-    color: #2f6454;
+  .portrait {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 999px;
+    object-fit: cover;
+    object-position: center;
+    flex: none;
+    border: 1px solid #d3d8dc;
+    background: #e8ecef;
   }
 
   .profile-title-wrap {
@@ -344,6 +378,12 @@ const titleParts = learnersData.title.split(learnersData.titleEmphasis ?? "");
   }
 
   @media (max-width: 640px) {
+    .portrait,
+    .avatar {
+      width: 4.7rem;
+      height: 4.7rem;
+    }
+
     .profile-header {
       padding-left: 0.9rem;
       padding-right: 0.9rem;

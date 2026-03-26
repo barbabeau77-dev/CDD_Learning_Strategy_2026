@@ -1,0 +1,659 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import pillars from "../data/pillars.json";
+import siteContent from "../data/site-content.json";
+
+const homeContent = siteContent.home;
+const heroTitleParts = homeContent.hero.title.split(homeContent.hero.emphasis ?? "");
+const heroStats = homeContent.vision.stats
+  .map((stat) => ({
+    ...stat,
+    resolvedValue: stat.value === "{pillars.length}" ? String(pillars.length) : stat.value
+  }))
+  .filter((stat) => stat.resolvedValue || stat.label);
+
+const iconPaths = {
+  "skills-framework": [
+    "M10 8h12",
+    "M8 12h16",
+    "M11 16h10",
+    "M9 8v10",
+    "M15 12v10"
+  ],
+  "learning-structure-landscape": [
+    "M6 8h12l4 4-4 4H6z",
+    "M6 12h16",
+    "M10 16h10"
+  ],
+  "assessment-validation": [
+    "M7 13l4 4 9-10",
+    "M12 4a8 8 0 1 1 0 16a8 8 0 0 1 0-16z"
+  ],
+  "manager-involvement": [
+    "M8 10a2.5 2.5 0 1 0 0-.01",
+    "M16 9a2 2 0 1 0 0-.01",
+    "M4.5 18c.8-2.7 2.8-4 5.5-4s4.7 1.3 5.5 4",
+    "M13.5 18c.5-1.8 1.8-2.8 3.8-2.8 1 0 1.9.2 2.7.7"
+  ],
+  "social-learning": [
+    "M12 20s-7-4.4-7-9.6A4.4 4.4 0 0 1 9.4 6c1.1 0 2.1.4 2.6 1.2C12.5 6.4 13.5 6 14.6 6A4.4 4.4 0 0 1 19 10.4C19 15.6 12 20 12 20z"
+  ],
+  "learning-support": [
+    "M12 5l1.8 3.7 4.2.6-3 2.9.7 4.2-3.7-2-3.7 2 .7-4.2-3-2.9 4.2-.6z",
+    "M12 14v5"
+  ],
+  "structure-processes": [
+    "M6 18V8l3-2 3 2v10",
+    "M12 18V6l3-2 3 2v12",
+    "M4 18h16"
+  ]
+};
+
+const pillarThemes = [
+  {
+    heroStart: "#2d6d6f",
+    heroEnd: "#7095a3",
+    accent: "#3f7780",
+    accentSoft: "rgba(63, 119, 128, 0.12)"
+  },
+  {
+    heroStart: "#8dbfbe",
+    heroEnd: "#5ca594",
+    accent: "#66b3a6",
+    accentSoft: "rgba(102, 179, 166, 0.12)"
+  },
+  {
+    heroStart: "#2d6d6f",
+    heroEnd: "#9fb8c2",
+    accent: "#7095a3",
+    accentSoft: "rgba(112, 149, 163, 0.16)"
+  },
+  {
+    heroStart: "#1b365d",
+    heroEnd: "#7b9ab8",
+    accent: "#5274a4",
+    accentSoft: "rgba(82, 116, 164, 0.14)"
+  },
+  {
+    heroStart: "#166659",
+    heroEnd: "#8dbfbe",
+    accent: "#50a294",
+    accentSoft: "rgba(80, 162, 148, 0.14)"
+  },
+  {
+    heroStart: "#1b365d",
+    heroEnd: "#7b9ab8",
+    accent: "#5274a4",
+    accentSoft: "rgba(82, 116, 164, 0.16)"
+  },
+  {
+    heroStart: "#165c8f",
+    heroEnd: "#5274a4",
+    accent: "#6f87b1",
+    accentSoft: "rgba(111, 135, 177, 0.14)"
+  }
+];
+---
+
+<BaseLayout title={`${homeContent.pageTitle} | SharePoint`}>
+  <Fragment slot="head">
+    <style is:inline>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .hero-wrap {
+        color: #eaf0f5;
+        padding: 4rem 1.25rem 6rem;
+        background:
+          radial-gradient(circle at 18% 100%, rgba(21, 96, 130, 0.26), transparent 45%),
+          radial-gradient(circle at 85% 5%, rgba(255, 255, 255, 0.08), transparent 38%),
+          radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+          var(--brand-navy);
+        background-size: auto, auto, 16px 16px, auto;
+      }
+
+      .hero-grid,
+      .framework-wrap,
+      .pillar-shell {
+        max-width: 1220px;
+        margin: 0 auto;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 2.25rem;
+        align-items: start;
+      }
+
+      .kicker {
+        margin: 0 0 1rem;
+        letter-spacing: 0.18em;
+        font-size: 0.72rem;
+        color: #95a8bb;
+        font-weight: 650;
+        text-transform: uppercase;
+      }
+
+      .hero-left h1 {
+        margin: 0;
+        max-width: 16ch;
+        line-height: 0.92;
+        letter-spacing: -0.035em;
+        font-size: clamp(2.35rem, 5vw, 5rem);
+        color: #f4f7fb;
+        font-family: var(--font-display);
+        font-weight: 700;
+      }
+
+      .hero-left em {
+        color: #d7e0ea;
+        font-style: italic;
+        font-weight: 450;
+      }
+
+      .lead {
+        margin: 1.5rem 0 2rem;
+        max-width: 56ch;
+        line-height: 1.68;
+        color: #c5d1dd;
+        font-size: 1rem;
+      }
+
+      .cta,
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        background: #f3f4f5;
+        color: #132f48;
+        padding: 0.86rem 1.3rem;
+        border-radius: 0.2rem;
+        font-weight: 700;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        transition: 0.2s ease;
+      }
+
+      .cta:hover,
+      .back-button:hover,
+      .pillar-card:hover {
+        transform: translateY(-1px);
+      }
+
+      .vision-card {
+        border: 1px solid rgba(232, 237, 245, 0.2);
+        border-radius: 0.6rem;
+        padding: 1.9rem;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .vision-quote {
+        margin: 0;
+        font-size: clamp(1.22rem, 2vw, 1.8rem);
+        line-height: 1.42;
+        letter-spacing: -0.015em;
+        color: #dce5ee;
+        font-family: var(--font-display);
+        font-style: italic;
+        font-weight: 500;
+      }
+
+      .stats {
+        margin-top: 2.2rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        border-top: 1px solid rgba(232, 237, 245, 0.14);
+        padding-top: 1rem;
+      }
+
+      .stats strong {
+        display: block;
+        color: #d5ae75;
+        font-size: 1.9rem;
+        font-family: var(--font-display);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+
+      .stats span {
+        font-size: 0.88rem;
+        color: #b2c2d1;
+      }
+
+      .framework-wrap {
+        padding: 3.7rem 1.25rem 2.4rem;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        line-height: 0.94;
+        letter-spacing: -0.03em;
+        font-size: clamp(2.1rem, 3.8vw, 3.85rem);
+        font-family: var(--font-display);
+        font-weight: 700;
+      }
+
+      .section-head p {
+        margin: 1rem 0 2.1rem;
+        max-width: 58ch;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.7;
+      }
+
+      .kicker.dark {
+        color: #97a1ab;
+      }
+
+      .pillar-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .pillar-card {
+        border: 1px solid var(--stroke);
+        border-radius: 0.45rem;
+        background: #f8f8f7;
+        padding: 1.4rem;
+        display: flex;
+        flex-direction: column;
+        min-height: 16rem;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .pillar-card:hover {
+        box-shadow: 0 14px 32px rgba(14, 40, 65, 0.08);
+      }
+
+      .icon-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.65rem;
+      }
+
+      .icon {
+        width: 2.1rem;
+        height: 2.1rem;
+        border-radius: 0.45rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #53565a;
+        background: rgba(83, 86, 90, 0.08);
+        border: 1px solid rgba(83, 86, 90, 0.16);
+      }
+
+      .icon svg {
+        width: 1.4rem;
+        height: 1.4rem;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.65;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .icon.green {
+        background: rgba(25, 107, 36, 0.1);
+      }
+
+      .icon.orange {
+        background: rgba(233, 113, 50, 0.1);
+      }
+
+      .icon.purple {
+        background: rgba(160, 43, 147, 0.08);
+      }
+
+      .icon.teal {
+        background: rgba(21, 96, 130, 0.1);
+      }
+
+      .ghost-nr {
+        color: #ececeb;
+        font-size: 2.8rem;
+        line-height: 1;
+        font-family: var(--font-display);
+        font-weight: 600;
+        letter-spacing: -0.04em;
+      }
+
+      .pillar-card h3 {
+        margin: 0.25rem 0 0.5rem;
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        font-weight: 700;
+      }
+
+      .pillar-card p {
+        margin: 0;
+        color: #4b5864;
+        line-height: 1.68;
+      }
+
+      .card-link {
+        margin-top: auto;
+        padding-top: 1rem;
+        color: var(--brand-teal);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.74rem;
+        font-weight: 700;
+      }
+
+      .pillar-section {
+        padding: 1.2rem 1.25rem 0;
+      }
+
+      .pillar-shell {
+        border-radius: 0.8rem;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(14, 40, 65, 0.08);
+        border: 1px solid rgba(14, 40, 65, 0.06);
+        background: #fff;
+      }
+
+      .pill-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        padding: 1.1rem 1.25rem 0;
+        background: linear-gradient(160deg, var(--pillar-hero-start) 0%, var(--pillar-hero-end) 100%);
+      }
+
+      .pill-count {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.2rem;
+        padding: 0.55rem 0.88rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.62);
+        background: rgba(14, 40, 65, 0.14);
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: #ffffff;
+        font-weight: 650;
+      }
+
+      .pillar-hero {
+        color: #eaf1f8;
+        background:
+          radial-gradient(circle at 18% 100%, var(--pillar-accent-soft), transparent 42%),
+          radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+          linear-gradient(160deg, var(--pillar-hero-start) 0%, var(--pillar-hero-end) 100%);
+        background-size: auto, 16px 16px, auto;
+        padding: 1.8rem 1.25rem 2.6rem;
+      }
+
+      .pillar-hero h2 {
+        margin: 0;
+        font-size: clamp(2.2rem, 4.2vw, 4.1rem);
+        line-height: 0.94;
+        letter-spacing: -0.035em;
+        font-family: var(--font-display);
+        font-weight: 700;
+      }
+
+      .pillar-hero p {
+        margin: 1rem 0 0;
+        max-width: 57ch;
+        color: #d3dfeb;
+        font-size: 1.08rem;
+        line-height: 1.62;
+      }
+
+      .pillar-content {
+        background: #f4f3f1;
+        padding: 2.3rem 1.25rem 2.8rem;
+      }
+
+      .pillar-content h3 {
+        margin: 0 0 1.25rem;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        font-family: var(--font-display);
+        line-height: 0.96;
+        letter-spacing: -0.03em;
+        font-weight: 700;
+      }
+
+      .body-copy {
+        margin: 0 0 1.25rem;
+        max-width: 74ch;
+        color: #2f4355;
+        line-height: 1.72;
+        font-size: 1.05rem;
+      }
+
+      .pillar-owner {
+        margin: 0 0 1.7rem;
+        color: #2f4355;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .highlights {
+        margin-top: 1.7rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+      }
+
+      .highlights article {
+        border-left: 3px solid var(--pillar-accent);
+        border-right: 3px solid var(--pillar-accent-soft);
+        background: #ececea;
+        padding: 1rem 1rem 1.05rem;
+        border-radius: 0.2rem;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .highlights article.is-priority {
+        box-shadow: inset 0 0 0 1px var(--pillar-accent-soft);
+      }
+
+      .priority-tag {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 0.7rem;
+        padding: 0.32rem 0.58rem;
+        border-radius: 999px;
+        background: var(--pillar-accent-soft);
+        color: var(--pillar-accent);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .highlights h4 {
+        margin: 0 0 0.35rem;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+      }
+
+      .highlights p {
+        margin: 0;
+        color: #54616e;
+        line-height: 1.62;
+      }
+
+      .owner-tag {
+        align-self: flex-start;
+        margin-top: auto;
+        padding-top: 0.9rem;
+        color: #2f4355;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 1080px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-left h1 {
+          max-width: 19ch;
+        }
+
+        .pillar-grid,
+        .highlights {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .hero-wrap {
+          padding-top: 3rem;
+          padding-bottom: 4rem;
+        }
+
+        .pillar-grid,
+        .highlights {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head p,
+        .pillar-hero p,
+        .body-copy {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </Fragment>
+  <section class="hero-wrap">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <p class="kicker">{homeContent.hero.kicker}</p>
+        <h1>
+          {heroTitleParts[0]}
+          {homeContent.hero.emphasis && <em>{homeContent.hero.emphasis}</em>}
+          {heroTitleParts[1]}
+        </h1>
+        <p class="lead">{homeContent.hero.lead}</p>
+        <a class="cta" href="#framework">{homeContent.hero.ctaLabel}</a>
+      </div>
+      <aside class="vision-card">
+        <p class="kicker">{homeContent.vision.kicker}</p>
+        <p class="vision-quote">{homeContent.vision.quote}</p>
+        <div class="stats">
+          {
+            heroStats.map((stat) => (
+              <div>
+                <strong>{stat.resolvedValue}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))
+          }
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="framework" class="framework-wrap">
+    <div class="section-head">
+      <p class="kicker dark">{homeContent.framework.kicker}</p>
+      <h2>
+        {homeContent.framework.titleLine1}<br />{homeContent.framework.titleLine2}
+      </h2>
+      <p>{homeContent.framework.description}</p>
+    </div>
+    <div class="pillar-grid">
+      {
+        pillars.map((pillar, index) => (
+          <a class="pillar-card" href={`#${pillar.slug}`}>
+            <div class="icon-row">
+              <span class={`icon ${pillar.accent}`} aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" focusable="false">
+                  {
+                    (iconPaths[pillar.slug] ?? []).map((path) => (
+                      <path d={path}></path>
+                    ))
+                  }
+                </svg>
+              </span>
+              <span class="ghost-nr">{index + 1}</span>
+            </div>
+            <h3>{pillar.title}</h3>
+            <p>{pillar.cardDescription}</p>
+            <span class="card-link">Open section</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    pillars.map((pillar, index) => {
+      const theme = pillarThemes[index % pillarThemes.length];
+
+      return (
+        <section
+          id={pillar.slug}
+          class="pillar-section"
+          style={`--pillar-hero-start: ${theme.heroStart}; --pillar-hero-end: ${theme.heroEnd}; --pillar-accent: ${theme.accent}; --pillar-accent-soft: ${theme.accentSoft};`}
+        >
+          <div class="pillar-shell">
+            <div class="pill-nav">
+              <a class="back-button" href="#framework">All pillars</a>
+              <span class="pill-count">
+                {siteContent.pillarPage.pillarCountLabel} {index + 1} {siteContent.pillarPage.ofLabel}{" "}
+                {pillars.length}
+              </span>
+            </div>
+            <div class="pillar-hero">
+              <h2>{pillar.title}</h2>
+              <p>{pillar.introText}</p>
+            </div>
+            <div class="pillar-content">
+              <h3>{siteContent.pillarPage.bodyHeading}</h3>
+              {
+                pillar.detailParagraphs
+                  .filter((paragraph) => paragraph?.trim())
+                  .map((paragraph) => <p class="body-copy">{paragraph}</p>)
+              }
+              {pillar.owner && <p class="pillar-owner">Owner: {pillar.owner}</p>}
+
+              {pillar.focusBoxes.length > 0 && (
+                <div class="highlights">
+                  {
+                    pillar.focusBoxes.map((item) => (
+                      <article class={item.priority2026 ? "is-priority" : undefined}>
+                        {item.priority2026 && (
+                          <span class="priority-tag">{siteContent.pillarPage.priorityLabel}</span>
+                        )}
+                        <h4>{item.title}</h4>
+                        <p>{item.description}</p>
+                        {item.priority2026 && item.owner && (
+                          <span class="owner-tag">Owner: {item.owner}</span>
+                        )}
+                      </article>
+                    ))
+                  }
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      );
+    })
+  }
+</BaseLayout>
