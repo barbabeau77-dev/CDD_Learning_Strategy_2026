@@ -15,14 +15,14 @@
       "initials": "AL",
       "name": "Alex",
       "age": 35,
-      "role": "Hands-on Field Technician",
+      "role": "The Hands-on Technician",
       "experience": "18 years experience",
       "context": "vocational background",
       "motivation": "low digital motivation",
       "quote": "I am not afraid to get my hands dirty. Hands-on experience is the best.",
       "nowTitle": "Where he is now",
       "nowParagraphs": [
-        "Alex has structured learning paths in Veida and progresses through to practical assessment where he can show what he can actually do. He completes Learning Paths when assigned but does not always engage deeply with digital content, and sometimes rushes through to get to the part he is good at.",
+        "Alex has structured learning paths in Veida and progresses through to practical assessment where he can show what he can actually do. He completes Learning Paths when assigned but does not always engage deeply with digital content, and sometimes rushes through to get to the part he is good at or interested in.",
         "There is little connecting what he learned in Veida to what happens back in the workshop, and no support available when he hits a problem on the job."
       ],
       "addsTitle": "What the strategy adds",
@@ -40,16 +40,16 @@
           "tone": "green"
         },
         {
+          "label": "Assessment",
+          "tone": "blue"
+        },
+        {
           "label": "Manager involvement",
           "tone": "purple"
         },
         {
           "label": "Learning support",
           "tone": "orange"
-        },
-        {
-          "label": "Assessment",
-          "tone": "blue"
         }
       ]
     },
@@ -59,7 +59,7 @@
       "initials": "LE",
       "name": "Lee",
       "age": 38,
-      "role": "Advanced Field Technician",
+      "role": "The Advanced Technician",
       "experience": "20 years experience",
       "context": "curious",
       "motivation": "high internal motivation",
@@ -72,7 +72,7 @@
       "addsTitle": "What the strategy adds",
       "addsParagraphs": [
         "Granular role profiles map out visible progression toward roles like trainer, product specialist, or workshop manager - turning Veida from a compliance tool into a genuine career development platform for him.",
-        "Additional content gives Lee more to explore beyond required paths. Social learning and the dealer trainer network create structured opportunities to share and learn from others. And where Lee currently turns to external communities for quick technical answers, the goal is for Veida's learning support to serve that need instead - keeping him inside the platform and making his expertise more visible to those around him."
+        "Additional content gives Lee more to explore beyond required paths. Social learning and the dealer trainer network create structured opportunities to share and learn from others. And as Lee currently turns to external communities for quick technical answers, the goal is to be able to offer that possibility on Veida's as well"
       ],
       "pillars": [
         {
@@ -84,12 +84,12 @@
           "tone": "green"
         },
         {
-          "label": "Social learning",
-          "tone": "green"
-        },
-        {
           "label": "Assessment",
           "tone": "blue"
+        },
+        {
+          "label": "Social learning",
+          "tone": "green"
         },
         {
           "label": "Learning support",
@@ -103,12 +103,11 @@
       "initials": "MI",
       "name": "Michael",
       "age": 45,
-      "role": "Goal-Oriented Salesman",
+      "role": "The Goal-Oriented Salesman",
       "experience": "20 years in sales",
       "context": "always on the move",
       "motivation": "learns continuously outside Veida",
       "quote": "My customers are my friends. Relationship-building is everything to me.",
-      "priorityLabel": "Learning support priority",
       "theme": "orange",
       "nowTitle": "Where he is now",
       "nowParagraphs": [
@@ -117,25 +116,30 @@
       ],
       "addsTitle": "What the strategy adds",
       "addsParagraphs": [
-        "Short product updates published early - before a full learning path is ready - mean Michael gets the essentials fast. That closes the gap between product launch and customer conversation, which is where it matters most for him. Program design built around his reality: short modules, mobile-friendly, consumable in the car between visits.",
-        "Learning support is where the strategy makes the biggest difference for Michael. Sitting in a car park before a customer visit, he needs a quick product summary, a competitor comparison, or a key spec - not a course. Mobile-friendly, searchable support built into Veida, or other Volvo systems, that he can use in the moment transforms the platform from something he logs into occasionally into something that actively helps him sell. Nudges tied to commercial moments - a product launch, an upcoming visit - feel relevant rather than administrative. For new salespeople, a structured onboarding program prevents the steep learning curve that currently hits them on day one."
+        "For new salespeople, a structured onboarding program prevents the steep learning curve that currently hits them on day one. Program design built around his reality: short modules, mobile-friendly, consumable in the car between visits.",
+        "Beyond Veida, we see a real opportunity to strengthen the sales offer through performance support that lives where Michael actually works - in the systems, tools, and moments that are part of his daily sales reality. Short product updates published early, product summaries, competitor comparisons, key specs available at the right moment, in the right place. Our role is to bring learning expertise to those projects. Helping shape how that information is structured, presented, and kept up to date so that Michael has what he needs when he is sitting in a car park before a customer visit, not after he has logged into a platform to find it. This could eventually reduce the need for formal training.",
+        "That closes the gap between product launch and customer conversation, which is where it matters most for him. Nudges tied to commercial moments - a product launch, an upcoming visit - feel relevant rather than administrative. "
       ],
       "pillars": [
-        {
-          "label": "Learning structure",
-          "tone": "green"
-        },
-        {
-          "label": "Learning support",
-          "tone": "orange"
-        },
         {
           "label": "Skills framework",
           "tone": "teal"
         },
         {
+          "label": "Learning structure",
+          "tone": "green"
+        },
+        {
+          "label": "Assessment",
+          "tone": "blue"
+        },
+        {
           "label": "Manager involvement",
           "tone": "purple"
+        },
+        {
+          "label": "Learning support",
+          "tone": "orange"
         }
       ]
     },
@@ -145,7 +149,7 @@
       "initials": "FR",
       "name": "Frank",
       "age": 37,
-      "role": "Aftermarket CSR",
+      "role": "The Frontline Fixer",
       "experience": "18 years experience",
       "context": "multitasker",
       "motivation": "reactive working style",
@@ -170,12 +174,16 @@
           "tone": "green"
         },
         {
-          "label": "Learning support",
-          "tone": "orange"
+          "label": "Assessment",
+          "tone": "blue"
         },
         {
           "label": "Manager involvement",
           "tone": "purple"
+        },
+        {
+          "label": "Learning support",
+          "tone": "orange"
         }
       ]
     }
